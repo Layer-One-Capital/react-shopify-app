@@ -1,0 +1,91 @@
+
+<% content_for :title, "#{ Settings.app_name }" %>
+
+<div class="mdl-layout mdl-js-layout">
+  <%= render partial: 'layouts/header' %>
+
+  <main class="mdl-layout__content home">
+
+    <div class="mdl-grid home__checkforproblems">
+      <div class="mdl-cell mdl-cell--12-col">
+        <h1>Does this really useful thing</h1>
+      </div>
+      <!-- <%= Settings.client_url %> -->
+      <div class="mdl-cell mdl-cell--12-col">
+        <div class="home__checkforproblems__enterwebsite">
+          <div class="mdl-textfield mdl-js-textfield">
+            Call to action
+          </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+            The action
+          </button>
+          or something else
+        </div>
+      </div>
+    </div>
+
+    <div class="mdl-grid home__checkforissues">
+      <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--2-col mdl-cell--4-col-phone home__checkforissues__img">
+        <img src="https://cdn2-pluginseo.s3.amazonaws.com/img/video_player_01.jpg">
+      </div>
+      <div class="mdl-cell mdl-cell--6-col">
+        <h2>First really great thing</h2>
+        <p>
+          <%= Settings.app_name %> gives you a single verdict: does your site have issues with search engine performance that will be worthwhile to fix? Once signed up (for free), Plug in SEO checks your site, determines the verdict and displays details.
+        </p>
+      </div>
+    </div>
+
+    <div class="mdl-grid home__experttofix">
+      <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--6-col mdl-cell--4-col-phone">
+        <h2>Something else that's awesome</h2>
+        <p>
+          You'll get simple instructions about how to fix any problem found for no charge. But if you'd like an expert to fix it for you we offer fixed-price packages.
+        </p>
+      </div>
+      <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-phone home__experttofix__img">
+        <img src="https://cdn2-pluginseo.s3.amazonaws.com/img/video_player_02.jpg">
+      </div>
+    </div>
+
+    <div class="mdl-grid home__shopifyexperts">
+      <div class="mdl-cell mdl-cell--12-col">
+        <a href="https://www.shopify.com/?ref=pluginseo"><img src="https://cdn2-pluginseo.s3.amazonaws.com/img/plug-in-seo-shopify-experts.png"></a>
+      </div>
+    </div>
+
+    <div class="mdl-grid home__testimonials">
+      <div class="mdl-cell mdl-cell--12-col">
+        <h2>Helping over 90,000 Small Businesses</h2>
+        <p>
+          "Very helpful! I am already noticing an increase in Google traffic. Worked with me through design/font changes as well. Great!"
+          <br/>– Morgan, Bomisch
+        </p>
+      </div>
+    </div>
+
+    <div class="mdl-grid home__getstarted">
+      <div class="mdl-cell mdl-cell--12-col">
+        <h2>Let's Get Started</h2>
+        <p>
+          <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent home__getstarted__button" href="<%= Settings.client_url %>/users/sign_up">
+            Activate your regular check
+          </a>
+          <a class="mdl-button mdl-js-button mdl-button--raised home__getstarted__button" href="<%= Settings.client_url %>/users/sign_in">
+            Sign in
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <%= render partial: 'layouts/footer' %>
+
+  </main>
+
+</div>
+
+<% content_for :javascript do %>
+  <script>
+
+  </script>
+<% end %>

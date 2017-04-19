@@ -1,0 +1,96 @@
+{
+  "name": "react-shopify-app",
+  "version": "1.0.0",
+  "description": "React/Rails Shopify app",
+  "author": "Pemberton Rank Ltd",
+  "license": "MIT",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "webpack-dev-server --progress --colors",
+    "install": "npm-git install",
+    "build": "webpack --mode=build"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "React"
+    ]
+  },
+  "common": {
+    "appName": "TODO Your app name shown to users here like Plug in SEO",
+    "analyticKeys": {
+      "development": "TODO",
+      "production": "TODO"
+    },
+    "signinField": "email",
+    "signupFields": [
+      "email",
+      "password",
+      "website"
+    ],
+    "logo": "TODO add your logo to /assets/images/logo.png",
+    "brandingColour": "#039be5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-runtime": "^6.11.6",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "eyeglass": "^0.8.3",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.28.0",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2",
+    "node-sass": "^3.8.0",
+    "sass-loader": "^4.0.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "alt": "^0.18.5",
+    "axios": "^0.13.1",
+    "body-parser": "^1.15.2",
+    "bourbon-neat": "^1.8.0",
+    "css-loader": "^0.23.1",
+    "formsy-material-ui": "^0.5.0",
+    "formsy-react": "^0.18.1",
+    "immutable": "^3.8.1",
+    "json-loader": "^0.5.4",
+    "jsonp": "^0.2.0",
+    "material-ui": "^0.16.0",
+    "npm-git-install": "^0.2.0",
+    "postcss-loader": "^0.9.1",
+    "precss": "^1.4.0",
+    "query-string": "^4.2.2",
+    "rc-tabs": "^7.0.5",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-helmet": "^3.1.0",
+    "react-router": "^2.6.1",
+    "react-tap-event-plugin": "^2.0.1",
+    "recompose": "^0.20.2",
+    "style-loader": "^0.13.1",
+    "validator": "^5.5.0",
+    "moment": "^2.17.1"
+  },
+  "gitDependencies": {
+    "common-frontend": "https://github.com/pemberton-rank/common-frontend.git#v1.1.9"
+  }
+}

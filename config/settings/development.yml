@@ -1,0 +1,3 @@
+api_url:    'http://localhost:3000'
+client_url: 'http://localhost:8080'
+www_url:    'http://localhost:3000'

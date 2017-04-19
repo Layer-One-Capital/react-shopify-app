@@ -1,0 +1,43 @@
+
+<%# Base layout for all static pages %>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% if content_for?(:title) %>
+      <title><%= yield(:title) %> | <%= Settings.app_name %></title>
+    <% else %>
+      <title><%= Settings.app_name %>: Check your website for problems</title>
+    <% end %>
+
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <%= favicon_link_tag 'favicon.ico' %>
+
+    <%= render partial: 'layouts/material_and_fonts' %>
+    <%= render partial: 'layouts/mdl_custom_styles' %>
+
+    <% if content_for?(:styles) %>
+      <%= yield(:styles) %>
+    <% end %>
+
+  	<!-- Modernizer and IE specific files
+  	<script src="js/modernizr.custom.js"></script>-->
+
+  	<!-- Some fixes for old browsers -->
+  	<!--[if IE 9]><link href="css/ie.css" rel="stylesheet" media="screen"><![endif]-->
+
+    <script type="text/javascript">
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+      analytics.load("<%= ENV['segment_write_key'] %>");
+      analytics.page()
+      }}();
+    </script>
+  </head>
+  <body>
+    <%= yield %>
+
+    <%= yield(:javascript) %>
+  </body>
+</html>

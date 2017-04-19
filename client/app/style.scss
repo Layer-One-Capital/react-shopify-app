@@ -1,0 +1,227 @@
+@import "bourbon";
+@import "neat";
+
+// TODO: move this to common?
+
+/* CSS GUIDELINES
+  ===============
+
+  1) We use the BEM Methodology.
+  Please read this article before changing anything.
+  http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+
+  Quick Analogy of how BEM Works
+  .person {}               -> Person would be the Block
+  .person__hand {}         -> Hand is an Element of Person
+  .person--female {}       -> Female is a modifier of the Person Block. A slightly different version
+  .person--female__hand {} -> Hand is an Element of the modified block Person
+  .person__hand--left {}   -> Left is a Modifier of the Element Hand.
+
+  2) We use Bourbon SCSS Library
+  More info here: http://bourbon.io/
+
+  3) For the grid we use Neat
+  More info here: http://neat.bourbon.io/
+
+  4) All media queries should be done right after the element they will change.
+
+ */
+
+/*
+  If you need a colour use one of these variables
+  Mirror them in pluginseo-theme.js to maintain consistency
+*/
+
+$topNavColor: #039BE5; //  #2c3e50
+$subNavColor: #0288D1;
+
+$foregroundWhite: #FAFAFA;
+$foregroundBlack: #212121;
+$foregroundGrey: lighten($foregroundBlack, 46%); // #969696
+$foregroundLighterGrey: #AAAAAA;
+
+$white: #FFFFFF;
+$green: #4CAF50;
+$red: #F44336;
+$blue: #03A9F4;
+$orange: #FFAB00;
+$yellow: #fec455;
+
+/* typography styles */
+$regular-weight: 300;
+$medium-weight: 400;
+.display2 {
+  font-size: 45px;
+  font-weight: $regular-weight;
+}
+.display1 {
+  font-size: 34px;
+  font-weight: $regular-weight;
+}
+.title {
+  font-size: 20px;
+  font-weight: $medium-weight;
+}
+.subhead {
+  font-size: 19px;
+  font-weight: $regular-weight;
+}
+.body2 {
+  font-size: 14px;
+  font-weight: $medium-weight;
+}
+.body1 {
+  font-size: 14px;
+  font-weight: $regular-weight;
+}
+.caption {
+  font-size: 12px;
+  font-weight: $regular-weight;
+}
+.button {
+  font-size: 14px;
+  font-weight: $medium-weight;
+  text-transform: uppercase;
+}
+
+.hint-text{
+  color: $foregroundLighterGrey;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: $regular-weight;
+}
+
+/* breakpoints */
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
+
+body{
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: $foregroundWhite;
+  color: $foregroundBlack;
+  @extend .body1
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+}
+h1 {
+  @extend .display1
+}
+h2 {
+  @extend .title
+}
+h3 {
+  @extend .subhead
+}
+
+a{
+  color: $blue;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+    color: darken( $blue, 15%);
+  }
+}
+
+hr {
+  clear:both;
+  border-top: solid #dededf;
+  border-width: 1px 0 0;
+  margin: 30px 0;
+  height: 0;
+}
+
+.material-icons.md-18 { font-size: 18px !important; }
+.material-icons.md-24 { font-size: 24px !important; }
+.material-icons.md-36 { font-size: 36px !important; }
+.material-icons.md-48 { font-size: 48px; }
+.foreground-white { color: $foregroundWhite !important; } // workaround for bug: https://github.com/callemall/material-ui/issues/1663
+.foreground-grey { color: $foregroundGrey !important; }
+.foreground-black { color: $foregroundBlack !important; }
+.red { color: $red !important; }
+.yellow { color: $yellow !important; }
+.orange { color: $orange !important; }
+.green { color: $green !important; }
+
+.sticky {
+  z-index: 1;
+}
+
+.logo{
+  margin-top:15px;
+  margin-right: 15px;
+  height: 32px;
+  width: 140px;
+  @include media($tablet) {
+    margin-right: 0;
+  }
+}
+
+@mixin circle($width) {
+  @include size($width);
+  border-radius: 50%;
+}
+
+ul.icon-font-list {
+	list-style-type: none;
+  li {
+    text-indent: -1.4em;
+    &.icon-font-list__list-item--check:before { content: "\e5ca"; color: $green; } // https://design.google.com/icons/#ic_check
+    &.icon-font-list__list-item--check-box:before { content: "\e834"; color: $green; } // https://design.google.com/icons/#ic_check_box
+    &.icon-font-list__list-item--check-box-outline-blank:before { content: "\e835" } // https://design.google.com/icons/#ic_check_box_outline_blank
+    &.icon-font-list__list-item--access-time:before { content: "\e192"; color: $orange } // https://design.google.com/icons/#ic_access_time
+    &.icon-font-list__list-item--clear:before { content: "\e14c"; color: $red } // https://design.google.com/icons/#ic_clear
+    &.icon-font-list__list-item--warning:before { content: "\e002"; color: $yellow } // https://design.google.com/icons/#ic_warning
+  }
+  li:before {
+  	font-family: Material Icons;
+  	float: left;
+  	width: 1.4em;
+  }
+}
+
+#topnavburger {
+  display: none;
+  @include media($mobile) {
+    display: inline-block;
+    margin-top: 9px
+  }
+}
+#topnavtabs {
+  display: inline-block;
+  width: 400px;
+  vertical-align: middle;
+  margin-top: 6px;
+  text-transform: uppercase;
+  line-height: 15px;
+  @include media($mobile) {
+    display: none;
+  }
+}
+
+.dashboard {
+  @include outer-container;
+  padding-top: 20px;
+  @include media( new-breakpoint(max-width 950px 4)  ) {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.callout {
+  font-weight: $medium-weight;
+  padding: 18px 15px;
+  background-color: $foregroundWhite;
+  border-bottom: 2px solid $foregroundGrey;
+  margin-bottom: 20px;
+}
+
+.offline {
+  width: 500px;
+  max-width: 100%;
+  margin: 100px auto 0 auto;
+  padding: 20px;
+}

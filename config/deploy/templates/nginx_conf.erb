@@ -1,0 +1,122 @@
+upstream unicorn_<%= fetch(:nginx_config_name) %> {
+  server unix:/tmp/unicorn.<%= fetch(:nginx_config_name) %>.sock fail_timeout=0;
+}
+
+<% if fetch(:nginx_use_ssl) %>
+server {
+  listen 80;
+  rewrite ^(.*) https://$host$1 permanent;
+}
+<% end %>
+
+server {
+<% if fetch(:nginx_use_ssl) %>
+  listen 443;
+  ssl on;
+  ssl_certificate <%= nginx_ssl_cert_file %>;
+  ssl_certificate_key <%= nginx_ssl_cert_key_file %>;
+<% else %>
+  listen 80;
+<% end %>
+
+  client_max_body_size 4G;
+  keepalive_timeout 10;
+
+  error_page 500 502 504 /500.html;
+  error_page 503 @503;
+
+  server_name <%= fetch(:nginx_api_server_name) %> <%= fetch(:nginx_static_server_name) %>;
+
+  root <%= current_path %>/public;
+  try_files $uri/index.html $uri @unicorn_<%= fetch(:nginx_config_name) %>;
+
+  location @unicorn_<%= fetch(:nginx_config_name) %> {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+<% if fetch(:nginx_use_ssl) %>
+    proxy_set_header X-Forwarded-Proto https;
+<% end %>
+    proxy_pass http://unicorn_<%= fetch(:nginx_config_name) %>;
+    # limit_req zone=one;
+    access_log <%= nginx_access_log_file %>;
+    error_log <%= nginx_error_log_file %>;
+  }
+
+  location ^~ /assets/ {
+    gzip_static on;
+    expires max;
+    add_header Cache-Control public;
+  }
+
+  location = /50x.html {
+    root html;
+  }
+
+  location = /404.html {
+    root html;
+  }
+
+  set $maintenance 0;
+
+  # is there maintenance file set?
+  if (-f $document_root/../tmp/maintenance.txt) {
+    set $maintenance 1;
+  }
+
+  # exclude /assets
+  if ( $uri ~* ^/assets\/\.* ) {
+    set $maintenance 0;
+  }
+
+  # in maintenance mode - send 503 status
+  if ($maintenance = 1) {
+    return 503;
+  }
+
+  # maintenance mode
+  error_page 503 @503;
+
+  # rewrite everything to maintenance.html
+  location @503 {
+    rewrite ^ /maintenance.html last;
+    break;
+  }
+
+  if ($request_method !~ ^(GET|HEAD|PUT|POST|DELETE|OPTIONS)$ ){
+    return 405;
+  }
+
+  if (-f $document_root/system/maintenance.html) {
+    return 503;
+  }
+
+  location ~ \.(php)$ {
+    return 405;
+  }
+}
+
+server {
+  <% if fetch(:nginx_use_ssl) %>
+    listen 443;
+    ssl on;
+    ssl_certificate <%= nginx_ssl_cert_file %>;
+    ssl_certificate_key <%= nginx_ssl_cert_key_file %>;
+  <% else %>
+    listen 80;
+  <% end %>
+
+    server_name <%= fetch(:nginx_app_server_name) %>;
+    root <%= current_path %>/client;
+    index index.html index.htm;
+
+    location / {
+       root <%= current_path %>/client;
+       index index.html;
+
+       <% if fetch(:nginx_use_ssl) %>
+         proxy_set_header X-Forwarded-Proto https;
+       <% end %>
+       try_files $uri $uri/ /index.html;
+    }
+}

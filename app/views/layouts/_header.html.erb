@@ -1,0 +1,20 @@
+<header class="mdl-layout__header mdl-layout__header--scroll custom-layout__header">
+  <div class="mdl-layout__header-row">
+    <a class="mdl-layout-title" href="/"><img src="<%= Settings.client_url %>/assets/images/logo.png" width="140px" height="32px" /></a>
+    <div class="mdl-layout-spacer"></div>
+    <nav class="mdl-navigation">
+      <a class="mdl-button mdl-js-button custom-layout__header__button" href="<%= Settings.client_url %>/users/sign_in">
+        Sign in
+      </a>
+      <a class="mdl-button mdl-js-button custom-layout__header__button" href="<%= Settings.client_url %>/users/sign_up">
+        Sign up
+      </a>
+    </nav>
+  </div>
+</header>
+<div class="mdl-layout__drawer">
+  <nav class="mdl-navigation">
+    <a class="mdl-navigation__link" href="<%= Settings.client_url %>/users/sign_in">Sign in</a>
+    <a class="mdl-navigation__link" href="<%= Settings.client_url %>/users/sign_up">Sign up</a>
+  </nav>
+</div>

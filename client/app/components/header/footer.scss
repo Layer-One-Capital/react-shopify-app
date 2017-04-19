@@ -1,0 +1,9 @@
+.footer--standard {
+  text-align: center;
+  &__links {
+    a {
+      text-decoration: none;
+      margin: 0 8px;
+    }
+  }
+}

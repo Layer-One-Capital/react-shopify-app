@@ -1,0 +1,17 @@
+
+html, body, #app, [data-reactroot] {
+  /* all parents of .footer so that it gets pushed down */
+  height: 100%;
+}
+.content {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -110px;
+}
+.content:after {
+  content: "";
+  display: block;
+}
+.footer, .content:after {
+  height: 110px;
+}

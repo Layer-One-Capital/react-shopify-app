@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  username: me
+  pool: 5
+
+development:
+  <<: *default
+  database: TODO YOURAPPNAME_development
+
+production:
+  <<: *default
+  database: TODO YOURAPPNAME
+
+
+test:
+  <<: *default
+  database: TODO YOURAPPNAME_test
