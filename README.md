@@ -42,13 +42,13 @@ Pull down the repo and create a copy. The bits you need to configure can general
 
 Here are the files you need to edit to get your development environment going:
 
-/client/package.json
-/config/initializers/devise.rb
-/config/application.yml
-/config/database.yml
-/config/secrets.yml
-/config/session_store.rb
-/config/settings.yml
+* /client/package.json
+* /config/initializers/devise.rb
+* /config/application.yml
+* /config/database.yml
+* /config/secrets.yml
+* /config/session_store.rb
+* /config/settings.yml
 
 Then:
 
@@ -67,27 +67,27 @@ We run staging and production environments, so you'll see code related to this. 
 
 Double check these bits (you might have already edited them during dev):
 
-/config/schedule.rb
-/config/deploy.rb
-/client/index.template.ejs
-/client/assets/images/logo.png
-/app/controllers/charges_controller.rb
-/app/controllers/webhooks_controller.rb
-/public/favicon.ico
-/public/404.html
-/public/500.html
+* /config/schedule.rb
+* /config/deploy.rb
+* /client/index.template.ejs
+* /client/assets/images/logo.png
+* /app/controllers/charges_controller.rb
+* /app/controllers/webhooks_controller.rb
+* /public/favicon.ico
+* /public/404.html
+* /public/500.html
 
 Then set up your configuration for the environments:
 
-/config/initializers/mail.rb
-/config/deploy/production.rb
-/config/deploy/staging.rb
-/config/settings/production.yml
-/config/settings/staging.yml
-/config/application.production.yml
-/config/application.staging.yml
-/config/database.production.yml
-/config/database.staging.yml
+* /config/initializers/mail.rb
+* /config/deploy/production.rb
+* /config/deploy/staging.rb
+* /config/settings/production.yml
+* /config/settings/staging.yml
+* /config/application.production.yml
+* /config/application.staging.yml
+* /config/database.production.yml
+* /config/database.staging.yml
 
 ## Deploying
 
