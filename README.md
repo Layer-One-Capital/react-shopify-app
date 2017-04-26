@@ -1,6 +1,6 @@
 # React Shopify app
 
-A full-featured React/Rails base app for building a Shopify app. Used and maintained by Plug in SEO, a top-rated Shopify app with 100k users.
+A full-featured React/Rails base app for building a Shopify app. Used and maintained by [Plug in SEO, a top-rated Shopify app](https://apps.shopify.com/plug-in-seo) with 100k users.
 
 ## Features
 
