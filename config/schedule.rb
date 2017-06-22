@@ -15,3 +15,7 @@ every 1.hour do
   # example: call your rake task like this
   # rake_with_lock 'reconcile_analytics', output: "#{log_root}reconcile_analytics.log", lock: "#{log_root}reconcile_analytics.lock"
 end
+
+every :day do
+  command "sudo certbot renew", output: "#{log_root}cert_renew.log"
+end

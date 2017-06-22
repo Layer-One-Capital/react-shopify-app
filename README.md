@@ -89,6 +89,23 @@ Then set up your configuration for the environments:
 * /config/database.production.yml
 * /config/database.staging.yml
 
+### Installing SSL Certificates
+Install `cerbot` on remote server using next commands:
+
+```
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-nginx
+```
+
+Then obtain SSL certificates on local machine using (this can take a while due to strong DH param generation):
+
+`bundle exec cap production ssl:setup`
+
+Certificates will renew automatically.
+
+
 ## Deploying
 
 ```bundle exec cap staging deploy``` deploys master to staging
