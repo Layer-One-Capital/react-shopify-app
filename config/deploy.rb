@@ -171,3 +171,16 @@ set :whenever_update_flags, ->{ "--update-crontab #{fetch :whenever_identifier} 
 set :whenever_clear_flags,  ->{ "--clear-crontab #{fetch :whenever_identifier}" }
 
 # require "whenever/capistrano"
+
+namespace :ssl do
+  desc 'Get certificates'
+  task :setup do
+    on roles(:app) do
+      rails_server_names = [fetch(:nginx_api_server_name), fetch(:nginx_static_server_name)].compact.map {|n| "-d #{n}"}.join(' ')
+      execute "sudo mkdir /etc/nginx/ssl/"
+      execute "sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048"
+      execute  "sudo certbot certonly --webroot --webroot-path=/srv/TODO YOUR_APP_NAME/current/public #{rails_server_names}"
+      execute  "sudo certbot certonly --webroot --webroot-path=/srv/TODO YOUR_APP_NAME/current/client -d #{fetch(:nginx_app_server_name)}"
+    end
+  end
+end
