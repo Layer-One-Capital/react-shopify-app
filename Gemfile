@@ -9,7 +9,7 @@ gem 'jwt'
 gem 'pr-common', git: 'https://github.com/pemberton-rank/common.git', tag: 'v0.1.5' # :path => '../common'
 gem 'active_model_serializers', '0.10.0.rc2'
 gem 'httparty'
-gem 'shopify_app'
+gem 'shopify_app', '~> 4.9.0'
 gem 'activeresource', github: 'rails/activeresource'
 gem 'sidekiq'
 gem 'whenever', require: false
