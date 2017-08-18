@@ -1,20 +1,20 @@
 GIT
-  remote: git://github.com/rails/activeresource.git
-  revision: f8abaf13174e94d179227f352c9dd6fb8b03e0da
-  specs:
-    activeresource (5.0.0)
-      activemodel (> 4.2, < 6)
-      activemodel-serializers-xml (~> 1.0)
-      activesupport (> 4.2, < 6)
-
-GIT
   remote: https://github.com/pemberton-rank/common.git
-  revision: bdc1bb807c46a22ddf63e6cbb55398dace9b6450
+  revision: 77328e3ce0b18481a5af8d7b02b86cedd2e4d54e
   tag: v0.1.5
   specs:
-    pr-common (0.1.4)
+    pr-common (0.1.5)
       active_model_serializers
       rails
+
+GIT
+  remote: https://github.com/rails/activeresource.git
+  revision: 65a87867ff8b91189cf6649f0a4423a41add0fc7
+  specs:
+    activeresource (5.0.0)
+      activemodel (>= 5.0, < 6)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (>= 5.0, < 6)
 
 GEM
   remote: https://rubygems.org/
