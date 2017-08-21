@@ -50,8 +50,10 @@ var releasePlugins = [
 
 var plugins = (prerelease || release) ? basePlugins.concat(releasePlugins) : basePlugins;
 
+var entry = (prerelease || release) ? ['./app'] : ['react-dev-utils/webpackHotDevClient', './app'];
+
 module.exports = {
-  entry: './app',
+  entry: entry,
   devtool: 'source-map',
   devServer: {
     historyApiFallback: true
