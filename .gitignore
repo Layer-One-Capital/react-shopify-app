@@ -1,6 +1,7 @@
 client/node_modules
-production.rb
-staging.rb
 log
 node_modules
 tmp
+
+*.staging.yml
+*.production.yml
