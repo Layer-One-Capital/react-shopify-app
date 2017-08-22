@@ -15,13 +15,13 @@ set :nginx_use_ssl, true
 
 # if set, it will ask to upload certificates from a local path. Otherwise, it will expect
 # the certificate and key defined in the next 2 variables to be already in the server.
-set :nginx_upload_local_certificate, false
+set :nginx_upload_local_cert, false
 
 set :nginx_ssl_cert_location, "/etc/letsencrypt/live/"
 set :nginx_ssl_cert, "fullchain.pem"
 set :nginx_ssl_cert_key, "privkey.pem"
-set :nginx_ssl_cert_path, "#{fetch(:nginx_ssl_cert_location)}#{fetch(:nginx_app_server_name)}/"
-set :nginx_ssl_cert_key_path, "#{fetch(:nginx_ssl_cert_location)}#{fetch(:nginx_app_server_name)}/"
+set :nginx_ssl_cert_path, "#{fetch(:nginx_ssl_cert_location)}#{fetch(:nginx_static_server_name)}/"
+set :nginx_ssl_cert_key_path, "#{fetch(:nginx_ssl_cert_location)}#{fetch(:nginx_static_server_name)}/"
 
 set :unicorn_workers, 2
 set :build_prerelease, :true
