@@ -28,7 +28,7 @@
   "common": {
     "apiUrls": {
       "release": "TODO https://api.your-domain.com",
-      "prerelease": "https://api-stage.your-domain.com"
+      "prerelease": "TODO https://api-stage.your-domain.com"
     },
     "appName": "TODO Your app name shown to users here like Plug in SEO",
     "analyticKeys": {
