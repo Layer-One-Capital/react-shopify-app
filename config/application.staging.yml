@@ -1,3 +1,3 @@
 see application.yml for an example
 
-staging_secret_key_base: use `rails secret` to generate a secure secret key
+secret_key_base: use `rails secret` to generate a secure secret key
