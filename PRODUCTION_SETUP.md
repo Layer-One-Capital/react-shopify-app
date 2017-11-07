@@ -140,4 +140,12 @@ And provision server
 bundle exec cap production setup nginx:reload
 ```
 
+10. Setup logrotate
+
+Run
+
+```
+bundle exec cap production logrotate:config
+```
+
 ### Congratulations 🎉, you're done!

@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/pemberton-rank/capistrano-logrotate.git
+  revision: 6bf81bbdc8076a5586a97d4e93fa46e80be1b663
+  specs:
+    capistrano-logrotate (0.1.1)
+      capistrano (~> 3.0)
+
+GIT
   remote: https://github.com/pemberton-rank/common.git
   revision: 77328e3ce0b18481a5af8d7b02b86cedd2e4d54e
   tag: v0.1.5
@@ -311,6 +318,7 @@ DEPENDENCIES
   analytics-ruby (~> 2.0.0)
   better_errors
   capistrano (~> 3.6)
+  capistrano-logrotate!
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   capistrano-unicorn-nginx (~> 4.0.0)
