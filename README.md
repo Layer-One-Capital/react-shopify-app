@@ -90,7 +90,7 @@ Then set up your configuration for the environments:
 * /config/database.staging.yml
 
 ### Installing SSL Certificates
-Install `cerbot` on remote server using next commands:
+Install `certbot` on remote server using next commands:
 
 ```
 sudo apt-get install software-properties-common
