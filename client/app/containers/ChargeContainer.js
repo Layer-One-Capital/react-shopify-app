@@ -50,7 +50,7 @@ export default class ChargeContainer extends React.Component {
         title: 'Upgrade declined',
         message: (
           <div>
-            <p>Charge declined. Have any questions before upgrading? Email us at <a href=`mailto:${ SUPPORT_EMAIL }`>{ SUPPORT_EMAIL }</a> and we&apos;ll be happy to answer them</p>
+            <p>Charge declined. Have any questions before upgrading? Email us at <a href={`mailto:${ SUPPORT_EMAIL }`}>{ SUPPORT_EMAIL }</a> and we&apos;ll be happy to answer them</p>
           </div>
         ),
         actionButtonLabel: 'Close'
