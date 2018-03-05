@@ -40,7 +40,7 @@ export default class Loading extends React.Component {
   render() {
     return (
       <div>
-        <Helmet title=`${ APP_NAME } - Loading...` />
+        <Helmet title={`${ APP_NAME } - Loading...`} />
         { this.state.visible &&
           <LinearProgress mode="indeterminate" />
         }
