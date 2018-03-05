@@ -1,0 +1,10 @@
+secret_key_base: use `rails secret` to generate a secure secret key
+
+shopify_api_key: TODO get this from your Shopify Partner Admin
+shopify_secret: TODO get this from your Shopify Partner Admin
+
+# email credentials aren't required for dev if you're using Letter Opener
+email_username: TODO from Sendgrid
+email_password: TODO from Sendgrid
+
+segment_write_key: TODO from Segment
