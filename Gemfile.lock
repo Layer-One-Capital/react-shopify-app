@@ -1,4 +1,14 @@
 GIT
+  remote: https://github.com/pemberton-rank/common.git
+  revision: f1ea5b336522267e7a8d3d4992d630d613e5232d
+  tag: v0.1.11
+  specs:
+    pr-common (0.1.11)
+      active_model_serializers
+      nokogiri (>= 1.8.2)
+      rails
+
+GIT
   remote: https://github.com/rails/activeresource.git
   revision: b71ded7e1b9004c7a24f28203c35c7ad24da6617
   specs:
@@ -94,6 +104,7 @@ GEM
     connection_pool (2.2.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    crass (1.0.3)
     css_parser (1.4.6)
       addressable
     deep_merge (1.1.1)
@@ -103,7 +114,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.2.5)
+    diff-lcs (1.3)
     erubis (2.7.0)
     factory_girl (4.7.0)
       activesupport (>= 3.0.0)
@@ -139,7 +150,8 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.0.3)
+    loofah (2.2.0)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
@@ -147,7 +159,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_portile2 (2.1.0)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.1)
     multi_xml (0.5.5)
@@ -156,9 +168,8 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
     nio4r (1.2.1)
-    nokogiri (1.6.8)
-      mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -176,7 +187,6 @@ GEM
     open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     pg (0.18.4)
-    pkg-config (1.1.7)
     premailer (1.8.7)
       css_parser (>= 1.4.5)
       htmlentities (>= 4.0.0)
@@ -206,9 +216,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0.1)
       sprockets-rails (>= 2.0.0)
-    rails-dom-testing (2.0.1)
-      activesupport (>= 4.2.0, < 6.0)
-      nokogiri (~> 1.6.0)
+    rails-dom-testing (2.0.3)
+      activesupport (>= 4.2.0)
+      nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     railties (5.0.0.1)
@@ -218,30 +228,30 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.15.0)
-    rake (11.3.0)
+    rake (12.3.0)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redis (3.3.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rspec-core (3.5.2)
-      rspec-support (~> 3.5.0)
-    rspec-expectations (3.5.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-mocks (3.5.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.5.0)
-    rspec-rails (3.5.2)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
-      rspec-support (~> 3.5.0)
-    rspec-support (3.5.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
     safe_yaml (1.0.4)
     shopify_api (4.9.1)
       activeresource (>= 3.0.0)
@@ -272,7 +282,7 @@ GEM
     sshkit (1.11.4)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-    thor (0.19.1)
+    thor (0.19.4)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -319,6 +329,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   open_uri_redirections
   pg (~> 0.18)
+  pr-common!
   premailer-rails
   pry-rails
   puma (~> 3.0)
