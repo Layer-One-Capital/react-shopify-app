@@ -6,7 +6,7 @@ gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'devise'
 gem 'jwt'
-gem 'pr-common', git: 'https://github.com/pemberton-rank/common.git', tag: 'v0.1.5' # :path => '../common'
+gem 'pr-common', git: 'https://github.com/pemberton-rank/common.git', tag: 'v0.1.11' # :path => '../common'
 gem 'active_model_serializers', '0.10.0.rc2'
 gem 'httparty'
 gem 'shopify_app', '~> 7.2.0'
@@ -36,7 +36,6 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-upload-config'
-  gem 'capistrano-logrotate', github: 'pemberton-rank/capistrano-logrotate'
   gem 'capistrano-unicorn-nginx', '~> 4.0.0'
 end
 
