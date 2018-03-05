@@ -36,6 +36,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rbenv', '~> 2.0'
   gem 'capistrano-upload-config'
+  gem 'capistrano-logrotate', github: 'pemberton-rank/capistrano-logrotate'
   gem 'capistrano-unicorn-nginx', '~> 4.0.0'
 end
 
