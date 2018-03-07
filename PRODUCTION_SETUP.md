@@ -1,6 +1,36 @@
+## Set up Stripe production keys
+
+* In Stripe with admin access grab the live key and secret from account -> keys
+* Create application.production.yml based on application.staging.yml,it should have a production hash similar to the staging hash from the staging one. Paste the Stripe keys in here.
+
+## Other production Rails config
+
+* Check these all exist and contain sensible stuff
+    * config/application.production.yml
+    * config/database.production.yml
+    * config/deploy/production.rb
+    * config/environments/production.rb
+
+## Create production EC2 instance
+
+* Log in to AWS and go to EC2
+* Select Launch
+    * Select instance type, probably you want T2 medium, hit Next
+    * Configure instance details: 1 instance, blimpon network, any subnet, enable public IP, everything else default, hit Next
+    * Add storage: Size 16GB, general SSD, everything else as default, hit Next
+    * Tags: I don't use these, hit next
+    * Security groups: select existing, select default, hit review and launch
+    * Hit launch
+    * Keypairs: choose existing, select ec2-blimpon-eu (Luke has this currently, get it from him)
+* Get the public IP of your new instance and log in like this `ssh -i ~/.ec2/ec2-blimpon-eu ubuntu@IP-ADDRESS-HERE` - note you will need the ec2-blimpon-eu SSH key
+* Edit config/deploy/production.rb and add/change the IP address to the new production one
+* Some commands to run as root: https://gist.github.com/lukesaunders/b1e3e1e20e83ed9011a5
+* Copy /home/deploy/.ssh/authorized_keys from an existing machine to the new one
+* Create /srv/blimpon and ensure it's owned by deploy
+
 ## Getting access to the server
 
-1. Create keypair file in AWS console or ask from a colleague developer.
+1. Create keypair file in AWS console or ask from a colleague developer. (or you did it already)
 2. Move keypair file `***.pem` to ~/.ssh/ folder
 3. Run `chmod 400 ~/.ssh/***.pem` so that only you can have access to the file
 4. Open `~/ssh/config` and add following text to that:
@@ -48,7 +78,7 @@ sudo visudo
 Add deploy user under root, then to exit vim and save - hit Ctrl+X, then Y, Enter.
 ```
 root    ALL=(ALL:ALL) ALL
-deploy    ALL=(ALL:ALL) NOPASSWD:ALL
+deploy  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 
 4.1 Switch to `deploy` user and install ruby for `deploy` user
@@ -70,8 +100,8 @@ gem install bundler
 
 4.2 Create folder for app
 ```
-sudo mkdir /srv/your_app_name
-sudo chown deploy /srv/your_app_name
+sudo mkdir /srv/[ app name ]
+sudo chown deploy /srv/[ app name ]
 ```
 
 
@@ -88,9 +118,10 @@ Now you, and capistrano, can ssh into server under `deploy` user with a `ssh dep
 5.1 Run next commands:
 ```
 sudo mkdir /etc/nginx/ssl/
-sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 4096
+sudo openssl dhparam -out /etc/nginx/ssl/dhparam.pem 2048
 sudo rm /etc/nginx/sites-enabled/default
 bundle config github.https true
+echo 'cd /srv/[ app name ]/current' >> ~/.bashrc
 ```
 
 6. Fill next files:
@@ -119,7 +150,7 @@ bundle exec cap production deploy
 ```
 
 
-8. Run this commands on server to handle SSL encryption
+8. Login to the server and run these commands on server to handle SSL encryption
 ```
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
@@ -138,14 +169,6 @@ set :nginx_use_ssl, true
 And provision server
 ```
 bundle exec cap production setup nginx:reload
-```
-
-10. Setup logrotate
-
-Run
-
-```
-bundle exec cap production logrotate:config
 ```
 
 ### Congratulations 🎉, you're done!
