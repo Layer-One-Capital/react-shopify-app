@@ -15,7 +15,7 @@
 
 * Log in to AWS and go to EC2
 * Select Launch
-    * Select instance type, probably you want T2 medium, hit Next
+    * Select instance type, probably you want t2.small, hit Next
     * Configure instance details: 1 instance, blimpon network, any subnet, enable public IP, everything else default, hit Next
     * Add storage: Size 16GB, general SSD, everything else as default, hit Next
     * Tags: I don't use these, hit next
@@ -27,6 +27,14 @@
 * Some commands to run as root: https://gist.github.com/lukesaunders/b1e3e1e20e83ed9011a5
 * Copy /home/deploy/.ssh/authorized_keys from an existing machine to the new one
 * Create /srv/blimpon and ensure it's owned by deploy
+
+## Create production RDS instance
+
+* Log in to AWS and go to RDS
+* Select Launch
+    * Select instance type, probably you want t2.micro, hit Next
+    * Use defaults but and chose default VPC group
+
 
 ## Getting access to the server
 
