@@ -7,10 +7,10 @@ class WebhooksController < ApplicationController
         user_id: user.id,
         event: 'Uninstalled Shopify app',
         properties: {
-            plus: user.is_plus?
+            activeCharge: user.active_charge?
         }
     })
 
-    user.update(plus: false)
+    user.update(active_charge: false)
   end
 end
