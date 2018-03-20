@@ -23,7 +23,7 @@ class ChargesController < ApplicationController
 
     if @charge.status == 'accepted'
       @charge.activate
-      @user.update(plus: true)
+      @user.update(active_charge: true)
       redirect_to "#{Settings.client_url}/charge/succeed"
     elsif @charge.status == 'declined'
       redirect_to "#{Settings.client_url}/charge/declined"

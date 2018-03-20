@@ -1,5 +1,5 @@
 import { SimpleDialog } from 'components'
-import { PlusActions } from 'actions'
+import { ExtendedUserActions } from 'actions'
 import { SUPPORT_EMAIL } from 'consts'
 
 // TODO: move to common
@@ -38,7 +38,7 @@ export default class ChargeContainer extends React.Component {
         ),
         actionButtonLabel: 'Go to .......'
       })
-      PlusActions.upgradeToPlus(this.context.currentUser)
+      ExtendedUserActions.upgradeToPlus(this.context.currentUser)
     } else if (this.state.event === 'failed') {
       this.setState({
         title: 'Upgrade failed',
