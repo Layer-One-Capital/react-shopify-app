@@ -43,13 +43,29 @@ class ChargesController < ApplicationController
   end
 
   def charge_params(access_token)
-    {
-      name:       'TODO app charge name',
-      price:      20.0, # TODO
-      trial_days: 7, # TODO
-      test:       !Rails.env.production?,
-      terms:      'TODO app charge terms',
-      return_url: "#{request.base_url}#{callback_charges_path}?access_token=#{access_token}"
-    }
+    price = 79.0 # TODO
+    trial_days = 7 # TODO
+    shop = ShopifyAPI::Shop.current
+    plan = shop.plan_name
+    
+    if plan == 'staff_business'
+      {
+        name:       'TODO app charge name (Free for Shopify staff)',
+        price:      price,
+        trial_days: 0,
+        test:       true,
+        terms:      "We're pleased to offer this app free for Shopify staff",
+        return_url: "#{request.base_url}#{callback_charges_path}?access_token=#{access_token}"
+      }
+    else
+      {
+        name:       'TODO app charge name',
+        price:      price,
+        trial_days: trial_days,
+        test:       !Rails.env.production?,
+        terms:      'TODO app charge terms',
+        return_url: "#{request.base_url}#{callback_charges_path}?access_token=#{access_token}"
+      }
+    end
   end
 end
