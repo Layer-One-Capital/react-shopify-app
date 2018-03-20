@@ -11,6 +11,6 @@ class WebhooksController < ApplicationController
         }
     })
 
-    user.update(plus: false)
+    user.update(active_charge: false)
   end
 end
