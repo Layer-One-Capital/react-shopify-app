@@ -11,6 +11,8 @@ job_type :rake_with_lock, "cd :path && :environment_variable=:environment flock 
 
 log_root = 'TODO /srv/YOUR_APP_NAME/shared/log/'
 
+env :PATH, ENV['PATH']
+
 every 1.hour do
   # example: call your rake task like this
   # rake_with_lock 'reconcile_analytics', output: "#{log_root}reconcile_analytics.log", lock: "#{log_root}reconcile_analytics.lock"
