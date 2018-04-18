@@ -11,43 +11,49 @@
     * config/deploy/production.rb
     * config/environments/production.rb
 
-## Create production EC2 instance
+## Create production & staging EC2 instance
 
 * Log in to AWS and go to EC2
 * Select Launch
     * Select instance type, probably you want t2.small, hit Next
-    * Configure instance details: 1 instance, blimpon network, any subnet, enable public IP, everything else default, hit Next
+    * Configure instance details: 2 instances, default network, any subnet, enable public IP, everything else default, hit Next
     * Add storage: Size 16GB, general SSD, everything else as default, hit Next
     * Tags: I don't use these, hit next
     * Security groups: select existing, select default, hit review and launch
     * Hit launch
-    * Keypairs: choose existing, select ec2-blimpon-eu (Luke has this currently, get it from him)
-* Get the public IP of your new instance and log in like this `ssh -i ~/.ec2/ec2-blimpon-eu ubuntu@IP-ADDRESS-HERE` - note you will need the ec2-blimpon-eu SSH key
-* Edit config/deploy/production.rb and add/change the IP address to the new production one
-* Some commands to run as root: https://gist.github.com/lukesaunders/b1e3e1e20e83ed9011a5
-* Copy /home/deploy/.ssh/authorized_keys from an existing machine to the new one
-* Create /srv/blimpon and ensure it's owned by deploy
+    * Keypairs: choose create new
 
-## Create production RDS instance
+## Create production & staging RDS instance
 
 * Log in to AWS and go to RDS
 * Select Launch
-    * Select instance type, probably you want t2.micro, hit Next
-    * Use defaults but and chose default VPC group
+    * Select instance type, probably you want t2.micro
+    * General SSD 20 GB, no Multi Availability (unless you want otherwire, but it's very expensive, so is the provisioned IOPS)
+    * Instance identifier: *app*-staging, username: *app*, click next
+    * VPC group default, subnet default, public: probably no, VPC: choose create new. It should be a group allowing the access only from ec2 security group
+    * database_name: *app*-staging,
 
 
 ## Getting access to the server
 
-1. Create keypair file in AWS console or ask from a colleague developer. (or you did it already)
+1. Find your created keypair
 2. Move keypair file `***.pem` to ~/.ssh/ folder
 3. Run `chmod 400 ~/.ssh/***.pem` so that only you can have access to the file
 4. Open `~/ssh/config` and add following text to that:
 ```
-Host 1.1.1.1 # IP of your EC2 instance
-User deploy
-IdentityFile ~/.ssh/***.pem # keypair file name
-ControlMaster auto
-ForwardAgent yes
+Host app-stage
+  HostName 1.1.1.1 # IP of your EC2 stage instance
+  User deploy
+  IdentityFile ~/.ssh/***.pem # keypair file name
+  ControlMaster auto
+  ForwardAgent yes
+  
+Host app-prod
+  HostName 1.1.1.1 # IP of your EC2 production instance
+  User deploy
+  IdentityFile ~/.ssh/***.pem # keypair file name
+  ControlMaster auto
+  ForwardAgent yes
 ```
 
 Add your public key to Git system you are using. To get public key from private key run `ssh-keygen -y -f ~/.ssh/***.pem`.
@@ -59,12 +65,13 @@ ssh-add ~/.ssh/***.pem
 
 You should run this if you have problems with accessing git.
 
-5. Now you can connect with command `ssh ubuntu@1.1.1.1`
+Then go to EC2 security groups find default ec2 group and add inbound rule for ssh and also http and https inbound for Anywhere
 
+5. Now you can connect with command `ssh ubuntu@app-stage`
 
 ## Setting up EC2 instance from scratch
 
-1. Connect to EC2 instance as root user using `ssh ubuntu@1.1.1.1`
+1. Connect to EC2 instance as root user using `ssh ubuntu@app-stage`
 2. Install software
 ```
 sudo apt-get update
@@ -99,8 +106,8 @@ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-rbenv install 2.3.0 # Your ruby version
-rbenv global 2.3.0
+rbenv install 2.5.0 # Your ruby version
+rbenv global 2.5.0
 
 echo "gem: --no-document" > ~/.gemrc
 gem install bundler
@@ -178,5 +185,9 @@ And provision server
 ```
 bundle exec cap production setup nginx:reload
 ```
+
+### Email setup
+
+1. Set up the inbox email at help@yourdomain.com according to this instruction https://github.com/arithmetric/aws-lambda-ses-forwarder
 
 ### Congratulations 🎉, you're done!
