@@ -1,4 +1,4 @@
-class CreateShops < ActiveRecord::Migration
+class CreateShops < ActiveRecord::Migration[5.0]
   def self.up
     create_table :shops  do |t|
       t.string :shopify_domain, null: false

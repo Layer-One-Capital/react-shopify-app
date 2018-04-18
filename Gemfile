@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.0'
+gem 'rails', '~> 5.1.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'rack-cors'
 gem 'devise'
 gem 'jwt'
 gem 'pr-common', git: 'https://github.com/pemberton-rank/common.git', tag: 'v0.1.11' # :path => '../common'
-gem 'active_model_serializers', '0.10.0.rc2'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'httparty'
 gem 'shopify_app', '~> 7.2.0'
 gem 'shopify_api', '~> 4.9.0'
@@ -21,6 +21,7 @@ gem 'liquid'
 gem 'analytics-ruby', '~> 2.0.0', require: 'segment/analytics'
 gem 'activesupport'
 gem 'premailer-rails'
+gem 'rollbar'
 
 # environment variables on staging/production
 gem 'figaro'
@@ -46,6 +47,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   #gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'byebug'
+  gem 'timecop'
 end
 
 group :production, :staging do
