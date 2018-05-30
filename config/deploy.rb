@@ -57,6 +57,8 @@ set :sidekiq_queue, %w(default mailer)
 
 set :app_subdir, 'rails'
 
+set :logrotate_template_path, File.expand_path("./logrotate.erb", File.dirname(__FILE__))
+
 #SSHKit.config.command_map.prefix[:bundle].push "rails"
 #SSHKit.config.command_map.prefix[:rake].push "rails"
 
@@ -184,3 +186,5 @@ namespace :ssl do
     end
   end
 end
+
+before "deploy:publishing", "logrotate:config"
