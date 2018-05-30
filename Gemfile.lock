@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/pemberton-rank/capistrano-logrotate.git
-  revision: a40fb0b0874ce9daa0acbd969e0433cbc7f8e908
-  specs:
-    capistrano-logrotate (0.1.1)
-      capistrano (~> 3.0)
-
-GIT
   remote: https://github.com/pemberton-rank/common.git
   revision: f1ea5b336522267e7a8d3d4992d630d613e5232d
   tag: v0.1.11
@@ -94,6 +87,8 @@ GEM
     capistrano-bundler (1.3.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-logrotate (0.4.0)
+      capistrano (~> 3.0)
     capistrano-rails (1.3.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -359,7 +354,7 @@ DEPENDENCIES
   better_errors
   byebug
   capistrano (~> 3.6)
-  capistrano-logrotate!
+  capistrano-logrotate
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   capistrano-unicorn-nginx (~> 4.0.0)
