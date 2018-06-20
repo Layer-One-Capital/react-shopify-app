@@ -7,13 +7,6 @@
 
   resources :unsubscribe,  only: :show
   resources :webhooks,     only: :create
-
-  resources :charges,      only: [:create] do
-    collection do
-      get :callback
-    end
-  end
-
   post 'users/current'
 
   constraints subdomain: ['www', 'www-stage'] do
