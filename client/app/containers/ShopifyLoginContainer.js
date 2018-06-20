@@ -1,9 +1,10 @@
 import connectToStores from 'alt-utils/lib/connectToStores'
 import { ExtendedUserActions } from 'actions'
 import { ExtendedUserStore } from 'stores'
-import { SimpleDialog, Loading } from 'components'
+import { Loading } from 'components'
 import Immutable from 'immutable'
 import { API_BASE, SUPPORT_EMAIL } from 'consts'
+import { SimpleDialog } from 'common-frontend'
 
 // TODO: move to common
 

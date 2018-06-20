@@ -1,4 +1,4 @@
-import { SimpleDialog } from 'components'
+import { SimpleDialog } from 'common-frontend'
 
 // TODO: move to common
 
