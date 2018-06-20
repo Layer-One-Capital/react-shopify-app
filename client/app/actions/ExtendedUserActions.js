@@ -22,12 +22,4 @@ export default class ExtendedUserActions {
       this.setShopifyUserFetchFailed(true)
     })
   }
-
-  // Boilerplate example: setting other properties on a user
-  upgradeToPlus(currentUser) {
-    Analytics.track('Upgraded to Plus')
-    currentUser.plus = true // reflect what has happened on the server without refreshing the whole user
-    UserActions.setExtendedUser(currentUser)
-    return true
-  }
 }
