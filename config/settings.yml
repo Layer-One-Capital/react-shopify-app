@@ -1,3 +1,8 @@
 app_name: 'TODO your app name to be shown to users like Plug in SEO'
 support_email: 'TODO email address'
 company_name: 'TODO your company name shown to users like Pemberton Rank Ltd.'
+price: 79.0 # TODO
+trial_days: 7 # TODO
+plan_name: 'TODO app charge name'
+plan_terms: 'TODO app charge terms'
+staff_plan_name: 'TODO app charge name (Free for Shopify staff)'
