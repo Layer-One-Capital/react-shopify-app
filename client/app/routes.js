@@ -11,6 +11,7 @@ import {
 import {
   AppContainer,
   AdminContainer,
+  AdminPromotionsContainer,
   ChargeContainer,
   PromotionContainer,
   DashboardContainer,
@@ -81,6 +82,7 @@ export default class Routes extends React.Component {
           <Route path='/users/sign_in/shopify/:token' components={{ header: null, content: ShopifyLoginContainer, footer: null }} onEnter={::this.signOutIfSignedIn} />
           <Route path='/unsubscribed' components={{ header: Header, nav: null, content: UnsubscribedContainer }} />
           <Route path='/admin' components={{ content: AdminContainer }} onEnter={::this.requireAdmin} />
+          <Route path='/admin/promotions' components={{ content: AdminPromotionsContainer }} onEnter={::this.requireAdmin} />
           <Route path='/promotion/:code' components={{ content: PromotionContainer }} onEnter={::this.requireAuth} />
         </Route>
       </Router>
