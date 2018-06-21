@@ -26,6 +26,11 @@ export default class Routes extends React.Component {
     if (!UserStore.getState().authenticated) replace('/users/sign_in')
   }
 
+  requireAdmin(nextState, replace) {
+    this.requireAuth(nextState, replace)
+    if (!UserStore.getState().currentUser.admin) replace('/')
+  }
+
   requireShopifyAuth(nextState, replace) {
     const shop = nextState.location.query.shop
     const { authenticated, currentUser } = UserStore.getState()
@@ -75,7 +80,7 @@ export default class Routes extends React.Component {
           <Route path='/charge/:event' components={{ content: ChargeContainer }} onEnter={::this.requireAuth} />
           <Route path='/users/sign_in/shopify/:token' components={{ header: null, content: ShopifyLoginContainer, footer: null }} onEnter={::this.signOutIfSignedIn} />
           <Route path='/unsubscribed' components={{ header: Header, nav: null, content: UnsubscribedContainer }} />
-          <Route path='/admin' components={{ content: AdminContainer }} onEnter={::this.requireAuth} />
+          <Route path='/admin' components={{ content: AdminContainer }} onEnter={::this.requireAdmin} />
           <Route path='/promotion/:code' components={{ content: PromotionContainer }} onEnter={::this.requireAuth} />
         </Route>
       </Router>
