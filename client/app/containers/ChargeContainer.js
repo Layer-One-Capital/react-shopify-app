@@ -26,8 +26,8 @@ export default class ChargeContainer extends React.Component {
       <Charge
         onClose={::this.onDialogClose}
         event={this.props.params.event}
-        support_email={SUPPORT_EMAIL}
-        success_destiny="......"
+        supportEmail={SUPPORT_EMAIL}
+        successDestiny="......"
       />
     )
   }
