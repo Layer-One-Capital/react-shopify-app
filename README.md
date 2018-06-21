@@ -71,7 +71,6 @@ Double check these bits (you might have already edited them during dev):
 * /config/deploy.rb
 * /client/index.template.ejs
 * /client/assets/images/logo.png
-* /app/controllers/charges_controller.rb
 * /app/controllers/webhooks_controller.rb
 * /public/favicon.ico
 * /public/404.html
