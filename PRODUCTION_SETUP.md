@@ -190,4 +190,13 @@ bundle exec cap production setup nginx:reload
 
 1. Set up the inbox email at help@yourdomain.com according to this instruction https://github.com/arithmetric/aws-lambda-ses-forwarder
 
+## Create production & staging Elasticache instance
+* Log in to AWS and go to Elasticache
+* Click on Get Started Now
+    * Redis should be Cluster Engine selected
+    * name: *app*-staging,
+    * Select node type, probably you want cache.t2.micro
+    * VPC group create new, use a VPC that has the port selected in inbound, if none exists, add the selected port(6379 the default) to inbound rule.
+    * Mark at least one subnet.
+
 ### Congratulations 🎉, you're done!
