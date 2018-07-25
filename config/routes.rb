@@ -1,9 +1,12 @@
- Rails.application.routes.draw do
+require 'sidekiq/web'
+
+Rails.application.routes.draw do
   constraints subdomain: ['api', 'api-stage'] do
     root 'home#index'
   end
 
   mount ShopifyApp::Engine, at: '/'
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :unsubscribe,  only: :show
   resources :webhooks,     only: :create
