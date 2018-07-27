@@ -8,3 +8,5 @@ email_username: TODO from Sendgrid
 email_password: TODO from Sendgrid
 
 segment_write_key: TODO from Segment
+
+REDIS_URL: TODO from redis endpoint (example: redis://endpoint:port/12)

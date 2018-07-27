@@ -39,6 +39,7 @@ group :development do
   gem 'capistrano-upload-config'
   gem 'capistrano-logrotate'
   gem 'capistrano-unicorn-nginx', '~> 4.0.0'
+  gem 'capistrano-sidekiq'
 end
 
 group :development, :test do
