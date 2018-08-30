@@ -80,11 +80,7 @@ namespace :deploy do
         with build_prerelease: fetch(:build_prerelease), build_release: fetch(:build_release), public_host: fetch(:public_host) do
           execute :ls, "-l"
           execute :npm, 'install'
-          build_res = capture :npm, 'run build'
-          puts build_res
-          if build_res.include?('Cannot resolve module')
-            abort 'Couldn\'t build the client'
-          end
+          execute :npm, 'run build'
         end
       end
     end
