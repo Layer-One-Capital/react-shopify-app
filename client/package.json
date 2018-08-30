@@ -7,7 +7,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "webpack-dev-server --progress --colors",
-    "build": "webpack --mode=build"
+    "build": "webpack --mode=build --bail"
   },
   "babel": {
     "presets": [
