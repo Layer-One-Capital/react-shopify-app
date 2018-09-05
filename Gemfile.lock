@@ -1,12 +1,14 @@
 GIT
   remote: https://github.com/pemberton-rank/common.git
-  revision: f1ea5b336522267e7a8d3d4992d630d613e5232d
-  tag: v0.1.11
+  revision: 7de3874e648eabb566217b3da6c548c1d1efd981
+  tag: v0.3.0
   specs:
     pr-common (0.1.11)
       active_model_serializers
+      activeresource
       nokogiri (>= 1.8.2)
       rails
+      shopify_app (~> 7.2.0)
 
 GIT
   remote: https://github.com/rails/activeresource.git
@@ -95,6 +97,9 @@ GEM
     capistrano-rbenv (2.1.3)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
     capistrano-unicorn-nginx (4.0.0)
       capistrano (>= 3.1)
       sshkit (>= 1.2.0)
@@ -357,6 +362,7 @@ DEPENDENCIES
   capistrano-logrotate
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
+  capistrano-sidekiq
   capistrano-unicorn-nginx (~> 4.0.0)
   capistrano-upload-config
   config
