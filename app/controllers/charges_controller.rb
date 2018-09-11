@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
     @charge = ShopifyAPI::RecurringApplicationCharge.find(params[:charge_id])
 
     if @charge.status == 'accepted'
-      @charge.activate
+      activate_user
       @user.update(active_charge: true)
       redirect_to "#{Settings.client_url}/charge/succeed"
     elsif @charge.status == 'declined'
@@ -33,6 +33,23 @@ class ChargesController < ApplicationController
   end
 
   private
+
+  def activate_user
+    @charge.activate
+    @user.update(active_charge: true)
+    @user.application_charges.create({
+      amount_usd: @charge.price,
+      date_created: Date.today
+    })
+    Analytics.track({
+      user_id: @user.id,
+      event: 'Charge Activated',
+      properties: {
+        'monthly_usd': @charge.price,
+        'email': @user.email
+      },
+    })
+  end
 
   def find_user
     @user = User.find_by!(access_token: params[:access_token])
@@ -47,7 +64,7 @@ class ChargesController < ApplicationController
     trial_days = 7 # TODO
     shop = ShopifyAPI::Shop.current
     plan = shop.plan_name
-    
+
     if plan == 'staff_business'
       {
         name:       'TODO app charge name (Free for Shopify staff)',
