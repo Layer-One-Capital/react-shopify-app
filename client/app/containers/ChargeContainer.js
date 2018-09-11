@@ -38,7 +38,7 @@ export default class ChargeContainer extends React.Component {
         ),
         actionButtonLabel: 'Go to .......'
       })
-      ExtendedUserActions.upgradeToPlus(this.context.currentUser)
+      ExtendedUserActions.activateCharge(this.context.currentUser)
     } else if (this.state.event === 'failed') {
       this.setState({
         title: 'Upgrade failed',

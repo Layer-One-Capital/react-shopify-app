@@ -13,7 +13,6 @@ export default class ExtendedUserActions {
     )
   }
 
-  // Boilerplate example: getting a user and setting them
   getCurrent(token) {
     this.setShopifyUserFetchFailed(false)
     return ExtendedUserSource.fetchCurrent(token).then(resp => {
@@ -24,9 +23,8 @@ export default class ExtendedUserActions {
   }
 
   // Boilerplate example: setting other properties on a user
-  upgradeToPlus(currentUser) {
-    Analytics.track('Upgraded to Plus')
-    currentUser.plus = true // reflect what has happened on the server without refreshing the whole user
+  activateCharge(currentUser) {
+    currentUser.activeCharge = true // reflect what has happened on the server without refreshing the whole user
     UserActions.setExtendedUser(currentUser)
     return true
   }
