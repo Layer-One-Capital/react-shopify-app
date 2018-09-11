@@ -1,5 +1,5 @@
 
-html, body, #app, [data-reactroot] {
+html, body, #app, #app [data-reactroot] {
   /* all parents of .footer so that it gets pushed down */
   height: 100%;
 }
